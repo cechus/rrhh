@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class RrhhTables extends Migration
 {
@@ -48,23 +48,23 @@ class RrhhTables extends Migration
             $table->bigInteger('insurance_company_id')->unsigned()->nullable();
             $table->bigInteger('city_identity_card_id')->unsigned()->nullable();
             $table->bigInteger('city_birth_id')->unsigned()->nullable();
-            $table->bigInteger('management_entity_id')->unsigned()->nullable();            
-            $table->string('identity_card')->nullable();//
-            $table->string('first_name')->nullable();//
-            $table->string('second_name')->nullable();//
-            $table->string('last_name')->nullable();//
-            $table->string('mothers_last_name')->nullable();//
-            $table->string('surname_husband')->nullable();//
-            $table->date('birth_date')->nullable();//
+            $table->bigInteger('management_entity_id')->unsigned()->nullable();
+            $table->string('identity_card')->nullable(); //
+            $table->string('first_name')->nullable(); //
+            $table->string('second_name')->nullable(); //
+            $table->string('last_name')->nullable(); //
+            $table->string('mothers_last_name')->nullable(); //
+            $table->string('surname_husband')->nullable(); //
+            $table->date('birth_date')->nullable(); //
             $table->string('account_number')->nullable();
             $table->string('nationality')->nullable();
             $table->string('nua_cua')->nullable();
-            $table->enum('gender', ['M', 'F'])->nullable();//
+            $table->enum('gender', ['M', 'F'])->nullable(); //
             $table->foreign('employee_type_id')->references('id')->on('employee_types');
             $table->foreign('insurance_company_id')->references('id')->on('insurance_companies');
             $table->foreign('city_identity_card_id')->references('id')->on('cities');
             $table->foreign('city_birth_id')->references('id')->on('cities');
-            $table->foreign('management_entity_id')->references('id')->on('management_entities');                        
+            $table->foreign('management_entity_id')->references('id')->on('management_entities');
             $table->timestamps();
         });
         // SEED
@@ -130,7 +130,7 @@ class RrhhTables extends Migration
             $table->decimal('discount_rc_iva', 8, 2)->default(0);
             $table->decimal('discount_faults', 8, 2)->default(0);
             $table->foreign('month_id')->references('id')->on('months');
-            $table->unique(['month_id','year']);
+            $table->unique(['month_id', 'year']);
             $table->timestamps();
         });
 
@@ -162,6 +162,7 @@ class RrhhTables extends Migration
             $table->timestamps();
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -183,4 +184,3 @@ class RrhhTables extends Migration
         Schema::dropIfExists('cities');
     }
 }
-

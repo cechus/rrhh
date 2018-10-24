@@ -10,6 +10,7 @@ class Procedure extends Model
     {
         return $this->belongsTo(Month::class);
     }
+
     public function payrolls()
     {
         return $this->hasMany(Payroll::class);

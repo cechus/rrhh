@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Employee;
 use App\Contract;
+use App\Employee;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
@@ -53,13 +53,12 @@ class EmployeeController extends Controller
             'charges.name as charge'
         )
         ->where('status', true)
-        ->leftJoin('employees', 'contracts.employee_id','=', 'employees.id')
+        ->leftJoin('employees', 'contracts.employee_id', '=', 'employees.id')
         ->leftJoin('cities', 'cities.id', '=', 'employees.city_identity_card_id')
         ->leftJoin('management_entities', 'employees.management_entity_id', '=', 'management_entities.id')
         ->leftJoin('positions', 'contracts.position_id', '=', 'positions.id')
         ->leftJoin('charges', 'positions.charge_id', '=', 'charges.id')
         ->get();
-
 
         return response()->json(['contracts' => $contracts->toArray(), 'total' => $total]);
 
@@ -78,7 +77,7 @@ class EmployeeController extends Controller
             'positions.name as position',
             'charges.base_wage',
             'charges.name as charge'
-        )   
+        )
         // ->skip($offset)
             // ->take($limit)
             ->orderBy($sort, $order)
@@ -93,13 +92,15 @@ class EmployeeController extends Controller
             ->whereRaw("coalesce(employees.surname_husband,'') LIKE '$surname_husband%'")
             ->whereRaw("coalesce(employees.identity_card, '') LIKE '$identity_card%'")
             ->get();
+
         return response()->json(['employees' => $employees->toArray(), 'total' => $total]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -110,7 +111,8 @@ class EmployeeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -121,8 +123,9 @@ class EmployeeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -133,7 +136,8 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

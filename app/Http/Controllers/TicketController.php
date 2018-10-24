@@ -2,26 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Procedure;
-
-use \Milon\Barcode\DNS1D;
-use \Milon\Barcode\DNS2D;
 use App\Helpers\Util;
+use App\Procedure;
 use Carbon\Carbon;
-use Log;
 
 class TicketController extends Controller
 {
     public function print($year, $month)
     {
         $procedure = Procedure::select('procedures.id')
-                        ->leftJoin("months", 'months.id', '=', 'procedures.month_id')
-                        ->whereRaw("lower(months.name) like '" . strtolower($month) . "'")
+                        ->leftJoin('months', 'months.id', '=', 'procedures.month_id')
+                        ->whereRaw("lower(months.name) like '".strtolower($month)."'")
                         ->where('year', '=', $year)
                         ->first();
         if (!$procedure) {
-            return "procedure not found";
+            return 'procedure not found';
         }
         $procedure = Procedure::with('month')->find($procedure->id);
         // $payrolls = $procedure->payrolls()->skip(5)->take(10)->get();
@@ -43,20 +38,20 @@ class TicketController extends Controller
             $payroll->position = $position->name;
             $payroll->base_wage = $charge->base_wage;
             $payroll->management_entity = $employee->management_entity->name;
-            $payroll->code_image = \DNS2D::getBarcodePNG(($payroll->id.' '. $contract->id.' '. $position->id.' '. $charge->id . ' ' . $employee->id), "PDF417", 3, 33, array(1, 1, 1));
+            $payroll->code_image = \DNS2D::getBarcodePNG(($payroll->id.' '.$contract->id.' '.$position->id.' '.$charge->id.' '.$employee->id), 'PDF417', 3, 33, [1, 1, 1]);
         }
-        $file_name= "Boletas de Pago de ".$procedure->month->name." de ".$procedure->year.".pdf";
+        $file_name = 'Boletas de Pago de '.$procedure->month->name.' de '.$procedure->year.'.pdf';
         $data = [
-            'payrolls' => $payrolls,
+            'payrolls'  => $payrolls,
             'procedure' => $procedure,
         ];
         // return view('print.temp');
         // return view('tickets.print',$data);
-        return \PDF::loadView('tickets.print',$data)
+        return \PDF::loadView('tickets.print', $data)
             ->setOption('page-width', '216')
             ->setOption('page-height', '356')
             // ->setPaper('letter')
-            ->setOption('margin-top',0)
+            ->setOption('margin-top', 0)
             ->setOption('margin-bottom', 0)
             ->setOption('margin-left', 4)
             ->setOption('margin-right', 4)

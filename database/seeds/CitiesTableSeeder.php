@@ -20,7 +20,7 @@ class CitiesTableSeeder extends Seeder
             ['name' => 'PANDO', 'shortened' => 'PD'],
             ['name' => 'POTOSÍ', 'shortened' => 'PT'],
             ['name' => 'SANTA CRUZ', 'shortened' => 'SC'],
-            ['name' => 'TARIJA', 'shortened' => 'TJ']
+            ['name' => 'TARIJA', 'shortened' => 'TJ'],
         ];
         foreach ($statuses as $status) {
             App\City::create($status);

@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Contract;
-use Carbon\Carbon;
-use App\Month;
 use App\Helpers\Util;
+use App\Http\Controllers\Controller;
+use App\Month;
+use Illuminate\Http\Request;
 
 class ContractController extends Controller
 {
@@ -18,9 +17,9 @@ class ContractController extends Controller
      */
     public function index(Request $request)
     {
-        $month = Month::whereRaw("lower(name) like '" . strtolower($request->month) . "'")->first();
+        $month = Month::whereRaw("lower(name) like '".strtolower($request->month)."'")->first();
         if (!$month) {
-            return "month not found";
+            return 'month not found';
         }
         $number_month = Util::geMonth($month->name);
         $offset = $request->offset ?? 0;
@@ -61,13 +60,15 @@ class ContractController extends Controller
             ->orderBy('employees.last_name', 'asc')
             ->get();
         $total = $contracts->count();
+
         return response()->json(['contracts' => $contracts->toArray(), 'total' => $total]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -78,7 +79,8 @@ class ContractController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -89,8 +91,9 @@ class ContractController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -101,7 +104,8 @@ class ContractController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

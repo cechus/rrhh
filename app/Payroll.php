@@ -10,6 +10,7 @@ class Payroll extends Model
     {
         return $this->belongsTo(Procedure::class);
     }
+
     public function contract()
     {
         return $this->belongsTo(Contract::class);

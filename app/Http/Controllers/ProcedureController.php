@@ -30,7 +30,8 @@ class ProcedureController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class ProcedureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Procedure  $procedure
+     * @param \App\Procedure $procedure
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Procedure $procedure)
@@ -52,7 +54,8 @@ class ProcedureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Procedure  $procedure
+     * @param \App\Procedure $procedure
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Procedure $procedure)
@@ -63,8 +66,9 @@ class ProcedureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Procedure  $procedure
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Procedure           $procedure
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Procedure $procedure)
@@ -75,7 +79,8 @@ class ProcedureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Procedure  $procedure
+     * @param \App\Procedure $procedure
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Procedure $procedure)

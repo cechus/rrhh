@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Payroll;
 use App\Month;
+use App\Payroll;
 use App\Procedure;
-use App\Employee;
+use Illuminate\Http\Request;
 
 class PayrollController extends Controller
 {
@@ -18,13 +17,13 @@ class PayrollController extends Controller
      */
     public function index(Request $request)
     {
-        $month = Month::whereRaw("lower(name) like '" . strtolower($request->month) . "'")->first();
+        $month = Month::whereRaw("lower(name) like '".strtolower($request->month)."'")->first();
         if (!$month) {
-            return "month not found";
+            return 'month not found';
         }
         $procedure = Procedure::select('procedures.id')
-            ->leftJoin("months", 'months.id', '=', 'procedures.month_id')
-            ->whereRaw("lower(months.name) like '" . strtolower($request->month) . "'")
+            ->leftJoin('months', 'months.id', '=', 'procedures.month_id')
+            ->whereRaw("lower(months.name) like '".strtolower($request->month)."'")
             ->where('year', '=', $request->year)
             ->first();
         $payrolls = Payroll::where('procedure_id', '=', $procedure->id)->get();
@@ -50,13 +49,15 @@ class PayrollController extends Controller
             $payroll->management_entity = $employee->management_entity->name;
         }
         $total = $payrolls->count();
+
         return response()->json(['payrolls' => $payrolls->toArray(), 'total' => $total]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -67,7 +68,8 @@ class PayrollController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -78,8 +80,9 @@ class PayrollController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -90,7 +93,8 @@ class PayrollController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

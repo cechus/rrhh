@@ -10,10 +10,12 @@ class Contract extends Model
     {
         return $this->hasMany(Payroll::class);
     }
+
     public function employee()
     {
         return $this->belongsTo(Employee::class);
     }
+
     public function position()
     {
         return $this->belongsTo(Position::class);

@@ -30,7 +30,8 @@ class ChargeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class ChargeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Charge  $charge
+     * @param \App\Charge $charge
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Charge $charge)
@@ -52,7 +54,8 @@ class ChargeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Charge  $charge
+     * @param \App\Charge $charge
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Charge $charge)
@@ -63,8 +66,9 @@ class ChargeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Charge  $charge
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Charge              $charge
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Charge $charge)
@@ -75,7 +79,8 @@ class ChargeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Charge  $charge
+     * @param \App\Charge $charge
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Charge $charge)

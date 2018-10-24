@@ -18,21 +18,18 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('employee','EmployeeController');
-Route::get('employee_data', 'EmployeeController@getEmployeeDatatable' )->name('employee_list');
+Route::resource('employee', 'EmployeeController');
+Route::get('employee_data', 'EmployeeController@getEmployeeDatatable')->name('employee_list');
 
-
-Route::get('employee/{employee}/payroll','PayrollController@employee_payroll');
-Route::get('payroll','PayrollController@index');
-Route::get('payroll/{year}/{month}','PayrollController@create')->name('create_payroll');
-Route::get('payroll/{year}/{month}/edit','PayrollController@edit')->name('edit_payroll');
-Route::post('payroll','PayrollController@store');
-
+Route::get('employee/{employee}/payroll', 'PayrollController@employee_payroll');
+Route::get('payroll', 'PayrollController@index');
+Route::get('payroll/{year}/{month}', 'PayrollController@create')->name('create_payroll');
+Route::get('payroll/{year}/{month}/edit', 'PayrollController@edit')->name('edit_payroll');
+Route::post('payroll', 'PayrollController@store');
 
 // Route::resource('report','ReportController');
-Route::get('report/{year}/{month}','ReportController@getExcel')->name('report_excel');
-Route::resource('contract','ContractController');
+Route::get('report/{year}/{month}', 'ReportController@getExcel')->name('report_excel');
+Route::resource('contract', 'ContractController');
 
 /*  tickets */
 Route::get('ticket/print/{year}/{month}', 'TicketController@print')->name('print_ticket');
-

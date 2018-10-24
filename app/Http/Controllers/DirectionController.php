@@ -30,7 +30,8 @@ class DirectionController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class DirectionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Direction  $direction
+     * @param \App\Direction $direction
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Direction $direction)
@@ -52,7 +54,8 @@ class DirectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Direction  $direction
+     * @param \App\Direction $direction
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Direction $direction)
@@ -63,8 +66,9 @@ class DirectionController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Direction  $direction
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Direction           $direction
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Direction $direction)
@@ -75,7 +79,8 @@ class DirectionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Direction  $direction
+     * @param \App\Direction $direction
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Direction $direction)

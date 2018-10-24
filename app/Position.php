@@ -10,10 +10,12 @@ class Position extends Model
     {
         return $this->belongsTo(Charge::class);
     }
+
     public function position_group()
     {
         return $this->belongsTo(PositionGroup::class);
     }
+
     public function contracts()
     {
         return $this->hasMany(Contract::class);

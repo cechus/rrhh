@@ -13,7 +13,7 @@ class ManagementEntityTableSeeder extends Seeder
     {
         $statuses = [
             ['name' => 'AFP FUTURO'],
-            ['name' => 'AFP PREVISION']
+            ['name' => 'AFP PREVISION'],
         ];
         foreach ($statuses as $status) {
             App\ManagementEntity::create($status);

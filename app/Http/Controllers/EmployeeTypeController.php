@@ -30,7 +30,8 @@ class EmployeeTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class EmployeeTypeController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\EmployeeType  $employeeType
+     * @param \App\EmployeeType $employeeType
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(EmployeeType $employeeType)
@@ -52,7 +54,8 @@ class EmployeeTypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\EmployeeType  $employeeType
+     * @param \App\EmployeeType $employeeType
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(EmployeeType $employeeType)
@@ -63,8 +66,9 @@ class EmployeeTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\EmployeeType  $employeeType
+     * @param \Illuminate\Http\Request $request
+     * @param \App\EmployeeType        $employeeType
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, EmployeeType $employeeType)
@@ -75,7 +79,8 @@ class EmployeeTypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\EmployeeType  $employeeType
+     * @param \App\EmployeeType $employeeType
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(EmployeeType $employeeType)

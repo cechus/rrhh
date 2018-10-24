@@ -30,7 +30,8 @@ class GroupJobController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +42,8 @@ class GroupJobController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\GroupJob  $groupJob
+     * @param \App\GroupJob $groupJob
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(GroupJob $groupJob)
@@ -52,7 +54,8 @@ class GroupJobController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\GroupJob  $groupJob
+     * @param \App\GroupJob $groupJob
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(GroupJob $groupJob)
@@ -63,8 +66,9 @@ class GroupJobController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\GroupJob  $groupJob
+     * @param \Illuminate\Http\Request $request
+     * @param \App\GroupJob            $groupJob
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, GroupJob $groupJob)
@@ -75,7 +79,8 @@ class GroupJobController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\GroupJob  $groupJob
+     * @param \App\GroupJob $groupJob
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(GroupJob $groupJob)

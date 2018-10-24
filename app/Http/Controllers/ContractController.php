@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Contract;
-use Illuminate\Http\Request;
-use App\PositionGroup;
 use App\Employee;
+use App\PositionGroup;
+use Illuminate\Http\Request;
+
 class ContractController extends Controller
 {
     /**
@@ -15,12 +16,13 @@ class ContractController extends Controller
      */
     public function index()
     {
-        $contracts = Contract::where('status',true)->get();
+        $contracts = Contract::where('status', true)->get();
         $contracts = Contract::all();
         $data = [
-            'contracts' =>  $contracts,
+            'contracts' => $contracts,
         ];
-        return view('contract.index',$data); 
+
+        return view('contract.index', $data);
     }
 
     /**
@@ -33,16 +35,18 @@ class ContractController extends Controller
         $employees = Employee::get();
         $position_groups = PositionGroup::get();
         $data = [
-            'employees' => $employees,
-            'position_groups'    =>  $position_groups
+            'employees'          => $employees,
+            'position_groups'    => $position_groups,
         ];
-        return view('contract.create',$data);
+
+        return view('contract.create', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -54,27 +58,31 @@ class ContractController extends Controller
         $contract->date_end = $request->date_end;
         $contract->status = true;
         $contract->save();
+
         return redirect('contract');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Contract $contract)
     {
         $data = [
-            'contract'  =>  $contract
+            'contract'  => $contract,
         ];
-        return view('contract.show',$data);
+
+        return view('contract.show', $data);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Contract $contract)
@@ -82,19 +90,21 @@ class ContractController extends Controller
         $employee = $contract->employee;
         $position_groups = PositionGroup::get();
         $data = [
-            'contract' => $contract,
-            'employee' => $employee,
-            'employees' => Employee::all(),
-            'position_groups' => $position_groups
+            'contract'        => $contract,
+            'employee'        => $employee,
+            'employees'       => Employee::all(),
+            'position_groups' => $position_groups,
         ];
-        return view('contract.edit',$data);
+
+        return view('contract.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Contract  $contract
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Contract            $contract
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -106,17 +116,19 @@ class ContractController extends Controller
         $contract->date_end = $request->date_end;
         if ($request->status == 'on') {
             $contract->status = true;
-        }else{
+        } else {
             $contract->status = false;
         }
         $contract->save();
+
         return redirect('contract');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Contract  $contract
+     * @param \App\Contract $contract
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Contract $contract)

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ManagementEntity extends Model
 {
-    protected $table = "management_entities";
+    protected $table = 'management_entities';
 
     public function employees()
     {
